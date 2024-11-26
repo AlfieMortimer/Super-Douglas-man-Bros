@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.VFX;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine.UI;
+using JetBrains.Annotations;
+using UnityEditor.SearchService;
+using TMPro;
 
 namespace Player
 {
@@ -29,28 +32,35 @@ namespace Player
 
         public float Coins;
 
-        public float invincibilityTimer;
+        public bool DIE;
 
+        public TextMeshProUGUI livesCount;
+        public TextMeshProUGUI coinsCount;
+
+        public float invincibilityTimer;
+        public int levelIndex;
         // variables holding the different player states
         //public exmapleState example;
         public IdleState idle;
         public walkState walk;
         public JumpState jump;
         public FallState fall;
+        public DeathState death;
 
         public StateMachine sm;
         public Animator animator;
         public SpriteRenderer sr;
 
-
         void Start()
         {
+            Time.timeScale = 1;
             rb = GetComponent<Rigidbody2D>();
             sm = gameObject.AddComponent<StateMachine>();
             animator = GetComponent<Animator>();
             sr = GetComponent<SpriteRenderer>();
 
 
+            levelIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
             // add new states here
             //exampleState = new exampleState(this, sm);
@@ -58,6 +68,7 @@ namespace Player
             walk = new walkState(this, sm);
             jump = new JumpState(this, sm);
             fall = new FallState(this, sm);
+            death = new DeathState(this, sm);
 
             // initialise the statemachine with the default state
             sm.Init(idle);
@@ -80,7 +91,7 @@ namespace Player
 
         public void InputJump()
         {
-            if (sm.CurrentState != jump && onGround == true)
+            if (sm.CurrentState != jump && onGround == true && Health > 0)
             {
                 rb.linearVelocityY = 0;
                 rb.AddForce(transform.up * jumpheight * 10, ForceMode2D.Impulse);
@@ -98,11 +109,12 @@ namespace Player
 
         public void CheckOnHealth()
         {
-            if(Health <= 0)
+            if(Health <= 0 && DIE == false)
             {
-                Debug.Log("PlayerHasDied");
+                sm.ChangeState(death);
+                DIE = true;
             }
-            if(Health >= 4)
+            if (Health >= 4)
             {
                 Health = 3;
             }
@@ -146,6 +158,7 @@ namespace Player
             if (collision.gameObject.tag == "Coin")
             {
                 Coins++;
+                coinsCount.text = "X " + Coins;
                 Destroy(collision.gameObject);
             }
             if(collision.gameObject.layer == 9)
@@ -159,6 +172,12 @@ namespace Player
                 }
                 
                 
+            }
+            if (collision.gameObject.layer == 11)
+            {
+                //play animations when win BEFORE loading next scene.
+                SceneManager.LoadScene(levelIndex);
+                Debug.Log(levelIndex);
             }
         }
     }

@@ -221,7 +221,11 @@ MonoBehaviour:
   playerBig: 0
   Health: 1
   Coins: 0
+  DIE: 0
+  livesCount: {fileID: 0}
+  coinsCount: {fileID: 0}
   invincibilityTimer: 0
+  levelIndex: 0
   sm: {fileID: 0}
   animator: {fileID: 4456068334752227185}
   sr: {fileID: 4961258464064588097}

@@ -22,6 +22,8 @@ namespace Player
         public LayerMask ground;
         public bool onGround = false;
         public FixedJoystick joystick;
+        public float gravityScale;
+        public GameObject feet;
 
         public Vector2 boxSize;
         public float castDistance;
@@ -31,6 +33,7 @@ namespace Player
         public float Health = 1;
 
         public float Coins;
+        public float lives;
 
         public bool DIE;
 
@@ -93,6 +96,7 @@ namespace Player
         {
             if (sm.CurrentState != jump && onGround == true && Health > 0)
             {
+                rb.gravityScale = 1.25f;
                 rb.linearVelocityY = 0;
                 rb.AddForce(transform.up * jumpheight * 10, ForceMode2D.Impulse);
 
@@ -104,6 +108,14 @@ namespace Player
             {
                 Debug.Log("One or more conditions were not met to jump");
                 Debug.Log(onGround + " : " + sm.CurrentState);
+            }
+        }
+
+        public void stopJump()
+        {
+            if(onGround == false)
+            {
+                rb.gravityScale = gravityScale;
             }
         }
 
@@ -153,6 +165,11 @@ namespace Player
             }
         }
 
+        public void updateCoinsandLives()
+        {
+            coinsCount.text = "X " + Coins;
+            livesCount.text = "X " + lives;
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "Coin")
@@ -161,11 +178,28 @@ namespace Player
                 coinsCount.text = "X " + Coins;
                 Destroy(collision.gameObject);
             }
-            if(collision.gameObject.layer == 9)
+
+            if (collision.gameObject.tag == "Mushroom")
+            {
+                if(playerBig == false)
+                {
+                    playerBig = true;
+                    transform.localScale = new Vector3(1, 2, 1);
+                    //feet.transform.localPosition = new Vector2(0, -1);
+                    castDistance = 1.1f;
+                    Destroy(collision.gameObject);
+                    Health++;
+                }
+            }
+
+            if (collision.gameObject.layer == 9)
             {
                 if (invincibilityTimer <= 0)
                 {
                     Health--;
+                    playerBig = false;
+                    castDistance = 0.5f;
+                    transform.localScale = new Vector3(1, 1, 1);
                     Debug.Log("Player has been hit. the player now has: " + Health + " Health remaining");
                     invincibilityTimer = 3;
                     sr.color = Color.grey;

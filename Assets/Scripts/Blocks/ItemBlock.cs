@@ -1,10 +1,13 @@
 using NUnit.Framework.Constraints;
+using Player;
 using UnityEngine;
 
 public class ItemBlock : MonoBehaviour
 {
     public GameObject itemSpawn;
     public Sprite deadblock;
+
+    public bool item;
 
     Vector3 spawnpos;
 
@@ -39,14 +42,25 @@ public class ItemBlock : MonoBehaviour
     //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6)
+        Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
+        if (collision.gameObject.layer == 6 && rb.linearVelocityY >= 0.1)
         {
             animator.Play("Stop");
             if (spawned == false)
             {
+                if (item)
+                {
                 Instantiate(itemSpawn, spawnpos, Quaternion.identity);
+                }
+                else
+                {
+                    PlayerScript player = collision.GetComponent<PlayerScript>();
+                    player.Coins++;
+                }
                 spawned = true;
             }
         }
     }
+
+
 }

@@ -8,6 +8,7 @@ TagManager:
   - Breakable
   - Item
   - Top
+  - Mushroom
   layers:
   - Default
   - TransparentFX
@@ -45,8 +46,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
+  - name: Mushroom
     uniqueID: 926694415
+    locked: 0
+  - name: Background
+    uniqueID: 3562348339
     locked: 0
   m_RenderingLayers:
   - Default

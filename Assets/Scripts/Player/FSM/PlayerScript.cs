@@ -6,7 +6,6 @@ using UnityEngine.VFX;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine.UI;
 using JetBrains.Annotations;
-using UnityEditor.SearchService;
 using TMPro;
 
 namespace Player
@@ -54,8 +53,12 @@ namespace Player
         public Animator animator;
         public SpriteRenderer sr;
 
+        public audioManager audioManager;
+        public AudioClip[] soundBin;
         void Start()
         {
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<audioManager>();
+
             Time.timeScale = 1;
             rb = GetComponent<Rigidbody2D>();
             sm = gameObject.AddComponent<StateMachine>();
@@ -96,13 +99,7 @@ namespace Player
         {
             if (sm.CurrentState != jump && onGround == true && Health > 0)
             {
-                rb.gravityScale = 1.25f;
-                rb.linearVelocityY = 0;
-                rb.AddForce(transform.up * jumpheight * 10, ForceMode2D.Impulse);
-
                 sm.ChangeState(jump);
-                onGround = false;
-                Debug.Log("Succesfully jumped");
             }
             else
             {
@@ -125,6 +122,7 @@ namespace Player
             {
                 sm.ChangeState(death);
                 DIE = true;
+                audioManager.playsfx(soundBin[2]);
             }
             if (Health >= 4)
             {
@@ -145,7 +143,6 @@ namespace Player
         public void runInput(bool Input)
         {
             running = Input;
-            Debug.Log (Input + " : " + running);
             
         }
 
@@ -165,11 +162,19 @@ namespace Player
             }
         }
 
-        public void updateCoinsandLives()
+        public void paused(bool pause)
         {
-            coinsCount.text = "X " + Coins;
-            livesCount.text = "X " + lives;
+            if (pause)
+            {
+                audioManager.playsfx(soundBin[3]);
+                audioManager.musicSource.Pause();
+            }
+            else
+            {
+                audioManager.musicSource.UnPause();
+            }
         }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "Coin")
@@ -177,6 +182,7 @@ namespace Player
                 Coins++;
                 coinsCount.text = "X " + Coins;
                 Destroy(collision.gameObject);
+                audioManager.playsfx(soundBin[0]);
             }
 
             if (collision.gameObject.tag == "Mushroom")
@@ -189,29 +195,35 @@ namespace Player
                     castDistance = 1.1f;
                     Destroy(collision.gameObject);
                     Health++;
+                    audioManager.playsfx(soundBin[7]);
                 }
             }
 
-            if (collision.gameObject.layer == 9)
+            if (collision.gameObject.layer == 9 && invincibilityTimer <= 0 && rb.linearVelocityY <= 0.1)
             {
-                if (invincibilityTimer <= 0)
+                Health--;
+                playerBig = false;
+                castDistance = 0.5f;
+                transform.localScale = new Vector3(1, 1, 1);
+                invincibilityTimer = 3;
+                sr.color = Color.grey;
+
+                if(Health > 0)
                 {
-                    Health--;
-                    playerBig = false;
-                    castDistance = 0.5f;
-                    transform.localScale = new Vector3(1, 1, 1);
-                    Debug.Log("Player has been hit. the player now has: " + Health + " Health remaining");
-                    invincibilityTimer = 3;
-                    sr.color = Color.grey;
+                    audioManager.playsfx(soundBin[8]);
                 }
-                
-                
+
             }
             if (collision.gameObject.layer == 11)
             {
                 //play animations when win BEFORE loading next scene.
                 SceneManager.LoadScene(levelIndex);
                 Debug.Log(levelIndex);
+            }
+
+            if (collision.gameObject.layer == 12)
+            {
+                Health = 0;
             }
         }
     }

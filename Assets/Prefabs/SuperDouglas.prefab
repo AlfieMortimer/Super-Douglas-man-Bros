@@ -215,12 +215,15 @@ MonoBehaviour:
     m_Bits: 8
   onGround: 0
   joystick: {fileID: 0}
+  gravityScale: 0
+  feet: {fileID: 0}
   boxSize: {x: 1.1, y: 0.4}
   castDistance: 0.5
   running: 0
   playerBig: 0
   Health: 1
   Coins: 0
+  lives: 0
   DIE: 0
   livesCount: {fileID: 0}
   coinsCount: {fileID: 0}

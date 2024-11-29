@@ -1,6 +1,8 @@
 
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
+
 namespace Player
 {
     public class JumpState : State
@@ -19,6 +21,11 @@ namespace Player
             player.animator.Play("Jump", 0, 0);
             player.animator.speed = 1;
             player.onGround = false;
+            player.rb.gravityScale = 1.25f;
+            player.rb.linearVelocityY = 0;
+            player.audioManager.playsfx(player.soundBin[1]);
+            player.rb.AddForce(player.transform.up * player.jumpheight * 10, ForceMode2D.Impulse);
+
         }
 
         public override void Exit()
@@ -57,7 +64,6 @@ namespace Player
                 {
                     vel.x = speed;
                     player.rb.linearVelocityX = vel.x;
-                    Debug.Log("Moved while jumping in one spot: " + player.rb.linearVelocityX);
                 }
 
             }
@@ -81,6 +87,7 @@ namespace Player
             if(player.rb.linearVelocityY <= 0)
             {
                 player.sm.ChangeState(player.fall);
+                Debug.Log(player.sm.CurrentState);
             }
         }
 

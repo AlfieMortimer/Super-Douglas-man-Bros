@@ -56,6 +56,7 @@ public class ItemBlock : MonoBehaviour
                 {
                     PlayerScript player = collision.GetComponent<PlayerScript>();
                     player.Coins++;
+                    player.audioManager.playsfx(player.soundBin[0]);
                 }
                 spawned = true;
             }

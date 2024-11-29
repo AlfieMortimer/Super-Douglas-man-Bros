@@ -162,7 +162,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.11}
+  m_Offset: {x: -0.058012962, y: -0.15746468}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -172,7 +172,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.25, y: 1}
+  m_Size: {x: 1.0003719, y: 0.90507066}
   m_EdgeRadius: 0
 --- !u!1 &8489571069993873321
 GameObject:
@@ -253,8 +253,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 926694415
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -3605285236067844410, guid: aed2f019bb7cf4b4d899d35f42aebf44, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -283,7 +283,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 73d803e53eee1144d9dad47d8aa39b3b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -304,7 +304,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 73d803e53eee1144d9dad47d8aa39b3b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -328,7 +328,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.06}
+  m_Offset: {x: -0.005273819, y: -0.060000002}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -338,7 +338,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.25, y: 1.1}
+  m_Size: {x: 1.0636597, y: 1.1}
   m_EdgeRadius: 0
 --- !u!95 &4956793640185421930
 Animator:
@@ -380,6 +380,8 @@ MonoBehaviour:
     m_Bits: 8
   castDistance: 0
   boxSize: {x: 1.36, y: 1, z: 0}
+  cam: {fileID: 0}
+  beginCycle: 0
   sm: {fileID: 0}
   anim: {fileID: 0}
   rb: {fileID: 0}

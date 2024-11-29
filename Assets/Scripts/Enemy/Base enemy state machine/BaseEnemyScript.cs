@@ -13,6 +13,10 @@ namespace Enemy
         public float castDistance;
         public Vector3 boxSize;
 
+        public Camera cam;
+
+        public bool beginCycle;
+
         public EnemyStateMachine sm;
         public Animator anim;
         public Rigidbody2D rb;
@@ -34,7 +38,8 @@ namespace Enemy
             death = new deathState(this, sm);
 
             sm.Init(walk);
-            Debug.Log(sm.CurrentState);
+
+            cam = FindAnyObjectByType<Camera>();
         }
 
         private void OnDrawGizmos()
@@ -45,13 +50,36 @@ namespace Enemy
         void Update()
         {
             sm.CurrentState.LogicUpdate();
+            checkInCam();
         }
 
         private void FixedUpdate()
         {
             sm.CurrentState.PhysicsUpdate();
+
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.layer == 12)
+            {
+                sm.ChangeState(death);
+            }
+
+        }
+
+        public void checkInCam()
+        {
+            Vector3 targetpos = cam.WorldToViewportPoint(gameObject.transform.position);
+            if (targetpos.x < 0 || targetpos.x > 1)
+            {
+                //Debug.Log("Out of view");
+            }
+            else
+            {
+                beginCycle = true;
+            }
+        }
     }
 
 }

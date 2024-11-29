@@ -13,7 +13,7 @@ namespace Enemy
         {
             base.Enter();
             enemy.anim.Play("Death");
-
+            enemy.rb.linearVelocity = Vector2.zero;
         }
         public override void Exit()
         {

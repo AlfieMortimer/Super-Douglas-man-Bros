@@ -38,8 +38,12 @@ namespace Enemy
             base.LogicUpdate();
             Vector2 vel = enemy.rb.linearVelocity;
             vel.x = enemy.speed;
-            enemy.rb.linearVelocity = vel;
-            faceRaycast();
+
+            if (enemy.beginCycle)
+            {
+                enemy.rb.linearVelocity = vel;
+                faceRaycast();
+            }
         }
 
         public override void PhysicsUpdate()

@@ -17,7 +17,10 @@ public class enemyDeathZone : MonoBehaviour
         bes = himself.GetComponent<BaseEnemyScript>();
 
         player = GameObject.FindWithTag("Player");
-        ps = player.GetComponent<PlayerScript>();
+        if(player != null)
+        {
+            ps = player.GetComponent<PlayerScript>();
+        }  
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,11 +33,14 @@ public class enemyDeathZone : MonoBehaviour
                 sm.ChangeState(bes.death);
                 ps.onGround = true;
                 ps.InputJump();
+                ps.audioManager.playsfx(ps.soundBin[6]);
             }
             else
             {
                 sm.ChangeState(bes.death);
-
+                ps.onGround = true;
+                ps.InputJump();
+                ps.audioManager.playsfx(ps.soundBin[6]);
             }
         }
     }

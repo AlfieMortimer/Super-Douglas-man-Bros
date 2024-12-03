@@ -104,6 +104,7 @@ MonoBehaviour:
   lvl1:
     m_Handle: 0
   coins: 0
-  lives: 2
+  lives: 5
   outOfLives: {fileID: 8300000, guid: 3b04e10c09494144ab484d6f88f567bc, type: 3}
+  menuMusic: {fileID: 8300000, guid: aeb580f2304436649a1e7b94317ec6a2, type: 3}
   audioManager: {fileID: 0}

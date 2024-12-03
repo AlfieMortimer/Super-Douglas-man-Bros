@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/1-2.unity
     guid: 14551e81ecfade34cbacb98388e0668f
   - enabled: 1
+    path: Assets/Scenes/You WON the GAME!.unity
+    guid: 6e64999f62a01ea4186e9d939f398ce8
+  - enabled: 1
     path: Assets/Scenes/OutOfLives.unity
     guid: 36267a4165d1a35468da2284708ddfca
   m_configObjects:

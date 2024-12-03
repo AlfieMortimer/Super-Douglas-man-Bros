@@ -11,6 +11,7 @@ public class playerManager : MonoBehaviour
     float timer = 7;
 
     public Scene lvl1;
+    public Scene Title;
 
     public float coins;
     public float lives;
@@ -108,6 +109,11 @@ public class playerManager : MonoBehaviour
 
         }
 
+    }
+
+    public void returnToTitleScreen()
+    {
+        SceneManager.LoadScene(0);
     }
 
 

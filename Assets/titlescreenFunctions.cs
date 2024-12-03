@@ -7,6 +7,8 @@ public class titlescreenFunctions : MonoBehaviour
     public Slider musicSlider;
     public Slider sfxSlider;
 
+    bool victoryachieved = false;
+
     public AudioClip[] audiothing;
 
     public audioManager audioManager;
@@ -31,11 +33,21 @@ public class titlescreenFunctions : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(3) && victoryachieved == false)
+        {
+            audioManager.musicSource.Stop();
+            audioManager.playMusic(audiothing[2]);
+            victoryachieved = true;
+        }
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("1-1");
         audioManager.stopmusic();
         audioManager.playMusic(audiothing[1]);
+        victoryachieved=false;
     }
 
     public void ExitGame()
@@ -61,6 +73,11 @@ public class titlescreenFunctions : MonoBehaviour
         PlayerPrefs.SetFloat("SFX", slider.value);
     }
 
-    
+    public void returnToTitleScreen()
+    {
+        SceneManager.LoadScene(0);
+        audioManager.musicSource.Stop();
+        audioManager.playMusic(audiothing[0]);
+    }
 
 }

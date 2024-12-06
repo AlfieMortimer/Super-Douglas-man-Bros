@@ -1,12 +1,23 @@
 # ninja log v5
+14	2157	7539810879450138	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1b6eb569048e207a
 91	695	7539810864853416	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	f2b35b974dd2d68a
 697	992	7539810867922389	D:/Year2/AlfieMortimer/Projects/Super-Douglas-man-Bros/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/36n5k1i1/obj/arm64-v8a/libswappywrapper.so	86eb96227fe33e3b
 32	1628	7539810873993171	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	545fa1bd4b360bae
+70	1764	7539810875511135	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	2876baa1870cda47
 8	1658	7539810874401883	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	d4b2bb05d758339a
+0	1838	7539810876315747	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	98bb35c5368474c4
 55	1672	7539810874562420	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	65c0e16f77842c00
 22	1742	7539810875304464	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	52463fca6f3a34d9
-70	1764	7539810875511135	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	2876baa1870cda47
-0	1838	7539810876315747	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	98bb35c5368474c4
 41	1986	7539810877817091	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	60d6a706bb1caf6e
-14	2157	7539810879450138	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1b6eb569048e207a
 2157	2263	7539810880605702	D:/Year2/AlfieMortimer/Projects/Super-Douglas-man-Bros/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/36n5k1i1/obj/arm64-v8a/libgame.so	a726e33e7cd9529
+58	363	7550932090186464	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	f2b35b974dd2d68a
+364	585	7550932092448295	D:/Year2/AlfieMortimer/Projects/Super-Douglas-man-Bros/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/36n5k1i1/obj/arm64-v8a/libswappywrapper.so	86eb96227fe33e3b
+41	1291	7550932099457005	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	545fa1bd4b360bae
+9	1326	7550932099818859	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	d4b2bb05d758339a
+27	1372	7550932100298229	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	65c0e16f77842c00
+21	1398	7550932100534598	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	52463fca6f3a34d9
+49	1422	7550932100787084	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	2876baa1870cda47
+3	1484	7550932101430593	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	98bb35c5368474c4
+34	1634	7550932102940517	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	60d6a706bb1caf6e
+15	1737	7550932103958318	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	1b6eb569048e207a
+1737	1855	7550932105181944	D:/Year2/AlfieMortimer/Projects/Super-Douglas-man-Bros/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/36n5k1i1/obj/arm64-v8a/libgame.so	a726e33e7cd9529

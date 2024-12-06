@@ -1,1 +1,1 @@
-DO NOT look at the push names (Pretty please)
+DO NOT look at the commit names (Pretty please)
